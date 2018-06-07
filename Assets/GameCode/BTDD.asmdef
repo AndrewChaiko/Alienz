@@ -1,0 +1,13 @@
+{
+    "name": "BTDD",
+    "references": [
+        "LeopotamGroup.Ecs",
+        "LeopotamGroup.Ecs.UnityIntegration",
+        "LeopotamGroup.Ecs.Ui",
+        "ThirdParty"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
