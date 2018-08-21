@@ -3,7 +3,6 @@
     "references": [
         "LeopotamGroup.Ecs",
         "LeopotamGroup.Ecs.UnityIntegration",
-        "LeopotamGroup.Ecs.Ui",
         "ThirdParty"
     ],
     "optionalUnityReferences": [],
