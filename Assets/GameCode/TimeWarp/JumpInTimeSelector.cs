@@ -1,5 +1,5 @@
-﻿using TimeWarp.Components;
-using LeopotamGroup.Ecs;
+﻿using Leopotam.Ecs;
+using TimeWarp.Components;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -80,9 +80,10 @@ public class JumpInTimeSelector : MonoBehaviour, IPointerDownHandler, IPointerUp
         {
             var newPlayerGo = Instantiate(playersFilter.Components2[i].gameObject);
             newPlayerGo.name = "Player";
-            var newPlayer = world.CreateEntity();
-            world.AddComponent<Player>(newPlayer).gameObject = newPlayerGo;
-            world.GetComponent<Player>(newPlayer).transform = newPlayerGo.transform;
+            var playerComponent = new Player();
+            var newPlayer = world.CreateEntityWith(out playerComponent);
+            playerComponent.gameObject = newPlayerGo;
+            playerComponent.transform = newPlayerGo.transform;
             world.AddComponent<Dynamic>(newPlayer).rigidbody = newPlayerGo.GetComponent<Rigidbody2D>();
             var recordable = world.AddComponent<Recordable>(newPlayer);
             recordable.positions = new Vector2[300];

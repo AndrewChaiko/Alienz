@@ -1,5 +1,5 @@
 ﻿using TimeWarp.Components;
-using LeopotamGroup.Ecs;
+using Leopotam.Ecs;
 using UnityEngine;
 
 namespace TimeWarp.Systems
@@ -12,9 +12,10 @@ namespace TimeWarp.Systems
         public void Initialize()
         {
             var playerGo = GameObject.Find("Player");
-            var player = world.CreateEntity();
-            world.AddComponent<Player>(player).gameObject = playerGo;
-            world.GetComponent<Player>(player).transform = playerGo.transform;
+            var playerComponent = new Player();
+            var player = world.CreateEntityWith(out playerComponent);
+            playerComponent.gameObject = playerGo;
+            playerComponent.transform = playerGo.transform;
             world.AddComponent<Dynamic>(player).rigidbody = playerGo.GetComponent<Rigidbody2D>();
             world.GetComponent<Dynamic>(player).collider = playerGo.GetComponent<Collider2D>();
             var recordable = world.AddComponent<Recordable>(player);

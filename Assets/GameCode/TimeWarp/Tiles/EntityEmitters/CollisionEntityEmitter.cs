@@ -1,4 +1,4 @@
-﻿using LeopotamGroup.Ecs;
+﻿using Leopotam.Ecs;
 using UnityEngine;
 
 public abstract class CollisionEntityEmitter<T> : MonoBehaviour where T : class, new()

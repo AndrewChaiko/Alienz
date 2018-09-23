@@ -1,5 +1,5 @@
-﻿using TimeWarp.Components;
-using LeopotamGroup.Ecs;
+﻿using Leopotam.Ecs;
+using TimeWarp.Components;
 using UnityEngine;
 
 namespace TimeWarp.Systems

@@ -1,5 +1,5 @@
 ﻿using TimeWarp.Systems;
-using LeopotamGroup.Ecs;
+using Leopotam.Ecs;
 using UnityEngine;
 
 public class GameStartup : MonoBehaviour
@@ -20,7 +20,7 @@ public class GameStartup : MonoBehaviour
     {
         _world = new EcsWorld();
 #if UNITY_EDITOR
-        LeopotamGroup.Ecs.UnityIntegration.EcsWorldObserver.Create(_world);
+        Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(_world);
 #endif  
         _gameplaySystems = new EcsSystems(_world)
             //.Add(jitEmitter)
@@ -40,7 +40,7 @@ public class GameStartup : MonoBehaviour
         _physicsSystems.Initialize();
 
 #if UNITY_EDITOR
-        LeopotamGroup.Ecs.UnityIntegration.EcsSystemsObserver.Create(_gameplaySystems);
+        Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_gameplaySystems);
 #endif
     }
 
