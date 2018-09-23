@@ -1,8 +1,8 @@
 {
     "name": "BTDD",
     "references": [
-        "LeopotamGroup.Ecs",
-        "LeopotamGroup.Ecs.UnityIntegration",
+        "Leopotam.Ecs",
+        "Leopotam.Ecs.UnityIntegration",
         "ThirdParty"
     ],
     "optionalUnityReferences": [],
