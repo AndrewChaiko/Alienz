@@ -1,5 +1,5 @@
 {
-    "name": "BTDD",
+    "name": "TimeWarp",
     "references": [
         "Leopotam.Ecs",
         "Leopotam.Ecs.UnityIntegration",
@@ -8,5 +8,9 @@
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
-    "allowUnsafeCode": false
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
 }

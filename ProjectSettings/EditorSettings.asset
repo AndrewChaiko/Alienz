@@ -6,8 +6,10 @@ EditorSettings:
   serializedVersion: 7
   m_ExternalVersionControlSupport: Hidden Meta Files
   m_SerializationMode: 2
-  m_LineEndingsForNewScripts: 0
+  m_LineEndingsForNewScripts: 2
   m_DefaultBehaviorMode: 1
+  m_PrefabRegularEnvironment: {fileID: 0}
+  m_PrefabUIEnvironment: {fileID: 102900000, guid: 4973e95a0bf40d6459dbe3e14b3d3f26, type: 3}
   m_SpritePackerMode: 4
   m_SpritePackerPaddingPower: 1
   m_EtcTextureCompressorBehavior: 1
@@ -15,7 +17,7 @@ EditorSettings:
   m_EtcTextureNormalCompressor: 2
   m_EtcTextureBestCompressor: 4
   m_ProjectGenerationIncludedExtensions: 
-  m_ProjectGenerationRootNamespace: 
-  m_UserGeneratedProjectSuffix: 
+  m_ProjectGenerationRootNamespace: TimeWarp
   m_CollabEditorSettings:
     inProgressEnabled: 1
+  m_EnableTextureStreamingInPlayMode: 1

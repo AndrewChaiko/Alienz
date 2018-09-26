@@ -56,7 +56,7 @@ public class GameStartup : MonoBehaviour
 
     void OnDisable()
     {
-        _gameplaySystems.Destroy();
-        _physicsSystems.Destroy();
+        _gameplaySystems.Dispose();
+        _physicsSystems.Dispose();
     }
 }
