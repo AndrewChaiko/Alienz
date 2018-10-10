@@ -1,9 +1,0 @@
-[submodule "Assets/ThirdParty/ECS/ecs"]
-	path = Assets/ThirdParty/ECS/ecs
-	url = https://github.com/Leopotam/ecs.git
-[submodule "Assets/ThirdParty/ECS/ecs-ui"]
-	path = Assets/ThirdParty/ECS/ecs-ui
-	url = https://github.com/Leopotam/ecs-ui.git
-[submodule "Assets/ThirdParty/ECS/ecs-unityintegration"]
-	path = Assets/ThirdParty/ECS/ecs-unityintegration
-	url = https://github.com/Leopotam/ecs-unityintegration.git
