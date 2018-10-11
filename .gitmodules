@@ -2,3 +2,21 @@
 	path = Assets/ThirdParty/ECS/ECS
 	url = https://github.com/Leopotam/ecs.git
 	branch = master
+	path = Assets/ThirdParty/ECS/ecs
+	url = https://github.com/Leopotam/ecs.git
+	branch = master
+	path = Assets/ThirdParty/ECS/ecs
+	url = https://github.com/Leopotam/ecs.git
+	branch = master
+[submodule "Assets/ThirdParty/ECS/-f"]
+	path = Assets/ThirdParty/ECS/-f
+	url = https://github.com/Leopotam/ecs.git
+	branch = master
+[submodule "Assets/ThirdParty/ECS/--force"]
+	path = Assets/ThirdParty/ECS/--force
+	url = https://github.com/Leopotam/ecs.git
+	branch = master
+[submodule "Assets/ThirdParty/ECS/ecs-unityintegration"]
+	path = Assets/ThirdParty/ECS/ecs-unityintegration
+	url = https://github.com/Leopotam/ecs-unityintegration.git
+	branch = master
