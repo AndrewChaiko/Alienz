@@ -1,0 +1,4 @@
+[submodule "Assets/ThirdParty/ECS/ECS"]
+	path = Assets/ThirdParty/ECS/ECS
+	url = https://github.com/Leopotam/ecs.git
+	branch = master
