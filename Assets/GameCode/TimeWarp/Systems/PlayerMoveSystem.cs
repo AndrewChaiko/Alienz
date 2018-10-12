@@ -1,5 +1,5 @@
-﻿using TimeWarp.Components;
-using Leopotam.Ecs;
+﻿using Leopotam.Ecs;
+using TimeWarp.Components;
 using UnityEngine;
 
 namespace TimeWarp.Systems
@@ -9,38 +9,28 @@ namespace TimeWarp.Systems
     {
         private EcsFilter<Player, Dynamic, Controllable>.Exclude<Replay, FrameSelection> playerFilter = null;
 
-        private readonly ContactPoint2D[] contacts = new ContactPoint2D[4];
-        private readonly RaycastHit2D[] results = new RaycastHit2D[4];
-        private readonly int layerMask = ~LayerMask.GetMask("Player");
+        private readonly ContactPoint2D[] _contacts = new ContactPoint2D[4];
+        private readonly RaycastHit2D[] _results = new RaycastHit2D[4];
 
         public void Run()
         {
             for (int i = 0; i < playerFilter.EntitiesCount; i++)
             {
-                Vector2 input = playerFilter.Components3[i].move;
+                Vector2 input = playerFilter.Components3[i].direction;
                 Rigidbody2D body = playerFilter.Components2[i].rigidbody;
-                int contactsCount = Physics2D.CircleCastNonAlloc(playerFilter.Components1[i].transform.position, 0.3f, Vector2.zero, results, 0, layerMask);
-                if (contactsCount > 0)
+                if (playerFilter.Components3[i].grounded)
                 {
-                    if (Vector2.Dot(results[0].normal, input) < -0.9f)
+                    if (Vector2.Dot(_results[0].normal, input) < -0.9f)
                     {
                         body.velocity = Vector2.zero;
                         return;
                     }
                 }
 
-                if (Mathf.Abs(playerFilter.Components3[i].move.x) > Mathf.Epsilon)
+                if (Mathf.Abs(playerFilter.Components3[i].direction.x) > Mathf.Epsilon)
                 {
-                    playerFilter.Components2[i].rigidbody.AddForce(new Vector2(playerFilter.Components3[i].move.x * PhysicsAdjuster.moveForce * body.mass, 0));
+                    playerFilter.Components2[i].rigidbody.MovePosition(playerFilter.Components2[i].rigidbody.position + playerFilter.Components3[i].direction * 0.1f);
                 }
-            }
-        }
-
-        private void SetBodyType(Rigidbody2D body, RigidbodyType2D type)
-        {
-            if (body.bodyType != type)
-            {
-                body.bodyType = type;
             }
         }
     }

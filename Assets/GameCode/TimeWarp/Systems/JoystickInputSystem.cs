@@ -5,14 +5,14 @@ using UnityEngine;
 namespace TimeWarp.Systems
 {
     [EcsInject]
-    public class InputSystem : IEcsRunSystem
+    public class JoystickInputSystem : IEcsRunSystem
     {
         EcsFilter<Controllable> controllableFilter = null;
         private Joystick joystick;
         private JumpButton jumpButton;
         private bool jumpPrevState;
 
-        public InputSystem(Joystick joystick, JumpButton jumpButton)
+        public JoystickInputSystem(Joystick joystick, JumpButton jumpButton)
         {
             this.joystick = joystick;
             this.jumpButton = jumpButton;
@@ -23,7 +23,7 @@ namespace TimeWarp.Systems
         {
             for (int i = 0; i < controllableFilter.EntitiesCount; i++)
             {
-                controllableFilter.Components1[i].move = new Vector2(joystick.Horizontal, joystick.Vertical);
+                controllableFilter.Components1[i].direction = new Vector2(joystick.Horizontal, joystick.Vertical);
                 if (jumpButton.IsDown != jumpPrevState)
                 {
                     jumpPrevState = jumpButton.IsDown;

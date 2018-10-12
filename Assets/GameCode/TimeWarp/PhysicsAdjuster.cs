@@ -3,7 +3,7 @@
 public class PhysicsAdjuster : MonoBehaviour
 {
     [SerializeField]
-    private Rigidbody2D rigidbodyPlayer;
+    private Rigidbody2D rigidbodyPlayer = null;
 
     public static float moveForce = 3;
     public static float jumpForce = 1;

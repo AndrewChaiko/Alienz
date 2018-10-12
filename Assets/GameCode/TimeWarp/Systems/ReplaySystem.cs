@@ -7,7 +7,7 @@ namespace TimeWarp.Systems
     [EcsInject]
     public class ReplaySystem : IEcsRunSystem
     {
-        EcsWorld world;
+        EcsWorld world = null;
         EcsFilter<Recordable, Dynamic, Replay, Player> replayablesFilter = null;
 
         public void Run()

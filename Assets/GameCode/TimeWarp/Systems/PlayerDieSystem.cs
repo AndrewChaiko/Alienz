@@ -7,20 +7,20 @@ namespace TimeWarp.Systems
     [EcsInject]
     public class PlayerDieSystem : IEcsRunSystem
     {
-        private EcsWorld world;
-        private EcsFilter<PlayerDie> interactionFilter = null;
-        private EcsFilter<Player, Dynamic, Controllable>.Exclude<Replay, FrameSelection> playerFilter = null;
+        private EcsWorld _world = null;
+        private EcsFilter<PlayerDie> _interactionFilter = null;
+        private EcsFilter<Player, Dynamic, Controllable>.Exclude<Replay, FrameSelection> _playerFilter = null;
 
         public void Run()
         {
-            for (int i = 0; i < interactionFilter.EntitiesCount; i++)
+            for (int i = 0; i < _interactionFilter.EntitiesCount; i++)
             {
-                for (int j = 0; j < playerFilter.EntitiesCount; j++)
+                for (int j = 0; j < _playerFilter.EntitiesCount; j++)
                 {
-                    playerFilter.Components1[j].gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                    _playerFilter.Components1[j].gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 }
 
-                world.RemoveEntity(interactionFilter.Entities[i]);
+                _world.RemoveEntity(_interactionFilter.Entities[i]);
             }
         }
     }

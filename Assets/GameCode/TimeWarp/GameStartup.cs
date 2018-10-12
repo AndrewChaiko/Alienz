@@ -26,14 +26,20 @@ public class GameStartup : MonoBehaviour
             //.Add(jitEmitter)
             .Add(new InitializePlayerSystem())
             .Add(new InitializeCameraSystem())
-            .Add(new InputSystem(joystick, jumpButton))
+#if UNITY_EDITOR
+            .Add(new KeyboardInputSystem())
+#else
+            .Add(new JoystickInputSystem(joystick, jumpButton))
+#endif
+            .Add(new PlayerContactsSystem())
+            .Add(new PrepareToJumpSystem())
             //.Add(new FrameSelectionSystem())
             //.Add(new RecorderSystem())
             //.Add(new ReplaySystem())
             .Add(new CameraFollowSystem())
             .Add(new PlayerDieSystem());
         _gameplaySystems.Initialize();
-
+            
         _physicsSystems = new EcsSystems(_world)
             .Add(new PlayerMoveSystem())
             .Add(new PlayerJumpSystem());
