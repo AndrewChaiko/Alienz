@@ -25,11 +25,11 @@ namespace TimeWarp.Systems
                 if (contactsCount > 0)
                 {
                     _playerFilter.Components3[i].groundNormal = _results[0].normal;
-                    SetBodyType(_playerFilter.Components2[i].rigidbody, RigidbodyType2D.Kinematic); // move to separate system
+                    _playerFilter.Components2[i].rigidbody.gravityScale = 0;
                 }
                 else
                 {
-                    SetBodyType(_playerFilter.Components2[i].rigidbody, RigidbodyType2D.Dynamic);
+                    _playerFilter.Components2[i].rigidbody.gravityScale = 1;
                 }
             }
         }

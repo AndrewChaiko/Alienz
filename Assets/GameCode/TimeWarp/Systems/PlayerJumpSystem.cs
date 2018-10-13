@@ -22,54 +22,13 @@ namespace TimeWarp.Systems
             for (int i = 0; i < _playerFilter.EntitiesCount; i++)
             {
                 var controllable = _playerFilter.Components3[i];
+                var body = _playerFilter.Components2[i].rigidbody;
 
-                if (controllable.readyToJump && controllable.jump)
+                if (controllable.readyToJump && controllable.jump && controllable.grounded)
                 {
-                    if (_playerFilter.Components3[i].grounded && _jumpboost == 0)
-                    {
-                        _jumpDirection = controllable.direction;
-                    }
-
-                    _jumpboost++;
-                    float C = Mathf.Cos(Time.deltaTime * _jumpboost * PhysicsAdjuster.jumpHeight);
-                    if (C > 0)
-                    {
-                        _playerFilter.Components2[i].rigidbody.velocity += C * _jumpDirection * PhysicsAdjuster.jumpForce;
-                    }
-                    else
-                    {
-                        _jumpboost = 0;
-                        _jumpDirection *= 0;
-                        _playerFilter.Components3[i].jump = false;
-                    }
-                }
-                else
-                {
-                    _jumpboost = 0;
-                    _jumpDirection *= 0;
+                    body.AddForce(controllable.direction * PhysicsAdjuster.jumpForce, ForceMode2D.Impulse);
                 }
             }
-        }
-
-        private Vector2 GetJumpDirection(Vector2 contactNormal, Vector2 input)
-        {
-            Vector2 returnVector = Vector2.zero;
-            var dot = Vector2.Dot(contactNormal, Vector2.up);
-
-            if (Mathf.Abs(dot) < 0.1f)  // on wall
-            {
-                returnVector = contactNormal + Vector2.up + input;
-            }
-            else if (dot < 0)                // on ceiling
-            {
-                returnVector = Vector2.down;
-            }
-            else                        // on floor
-            {
-                returnVector = Vector2.up;
-            }
-
-            return returnVector.normalized;
         }
     }
 }

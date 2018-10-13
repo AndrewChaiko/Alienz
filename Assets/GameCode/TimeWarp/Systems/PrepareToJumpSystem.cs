@@ -15,16 +15,18 @@ namespace TimeWarp.Systems
             for (int i = 0; i < _playerFilter.EntitiesCount; i++)
             {
                 var controllable = _playerFilter.Components3[i];
+                var dir = controllable.direction.normalized;
 
                 if (controllable.grounded)
                 {
-                    if (Vector2.Dot(controllable.direction, controllable.groundNormal) > 0.5f)
+                    Debug.Log(Vector2.Dot(dir, controllable.groundNormal));
+                    if (Mathf.Abs(Vector2.Dot(dir, controllable.groundNormal)) <= 0.3f)
                     {
-                        controllable.readyToJump = true;
+                        controllable.readyToJump = false;
                     }
                     else
                     {
-                        controllable.readyToJump = false;
+                        controllable.readyToJump = true;
                     }
                 }
             }

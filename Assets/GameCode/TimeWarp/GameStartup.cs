@@ -42,7 +42,8 @@ public class GameStartup : MonoBehaviour
             
         _physicsSystems = new EcsSystems(_world)
             .Add(new PlayerMoveSystem())
-            .Add(new PlayerJumpSystem());
+            .Add(new PlayerJumpSystem())
+            ;
         _physicsSystems.Initialize();
 
 #if UNITY_EDITOR

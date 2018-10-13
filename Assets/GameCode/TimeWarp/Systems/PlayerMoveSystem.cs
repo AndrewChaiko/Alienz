@@ -16,22 +16,34 @@ namespace TimeWarp.Systems
         {
             for (int i = 0; i < playerFilter.EntitiesCount; i++)
             {
-                Vector2 input = playerFilter.Components3[i].direction;
+                var controllable = playerFilter.Components3[i];
                 Rigidbody2D body = playerFilter.Components2[i].rigidbody;
-                if (playerFilter.Components3[i].grounded)
+                if (controllable.grounded)
                 {
-                    if (Vector2.Dot(_results[0].normal, input) < -0.9f)
+                    if (Vector2.Dot(_results[0].normal, controllable.direction) < -0.9f)
                     {
                         body.velocity = Vector2.zero;
                         return;
                     }
                 }
 
-                if (Mathf.Abs(playerFilter.Components3[i].direction.x) > Mathf.Epsilon)
+                if (controllable.grounded && !controllable.readyToJump)
                 {
-                    playerFilter.Components2[i].rigidbody.MovePosition(playerFilter.Components2[i].rigidbody.position + playerFilter.Components3[i].direction * 0.1f);
+                    var tangent = Rotate90(controllable.groundNormal);
+                    var resultVector =  tangent * Vector2.Dot(tangent, controllable.direction);
+                    Debug.Log(tangent);
+                    body.velocity = resultVector * PhysicsAdjuster.moveForce * body.mass;
                 }
             }
+        }
+
+        public static Vector2 Rotate90(Vector2 normal)
+        {
+            Vector2 rotated_point;
+            rotated_point.x = normal.y;
+            rotated_point.y = -normal.x;
+            //return Quaternion.Euler(0, 0, c) * normal;
+            return rotated_point;
         }
     }
 }
