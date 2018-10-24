@@ -5,6 +5,6 @@ namespace TimeWarp.Components
     public class Dynamic
     {
         public Rigidbody2D rigidbody;
-        public Collider2D collider;
+        public CircleCollider2D collider;
     }
 }

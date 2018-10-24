@@ -13,8 +13,8 @@ namespace TimeWarp.Systems
         {
             for (int i = 0; i < _controllableFilter.EntitiesCount; i++)
             {
-                _controllableFilter.Components1[i].direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-                _controllableFilter.Components1[i].jump = Input.GetKey(KeyCode.Space);
+                _controllableFilter.Components1[i].direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                _controllableFilter.Components1[i].jump = Input.GetKeyDown(KeyCode.LeftControl);
             }
         }
     }
